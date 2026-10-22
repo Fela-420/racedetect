@@ -1,0 +1,9 @@
+project,file_line,verdict,note
+golang-lru,expirable/expirable_lru.go:157,false-positive,Add: exit covered by defer func at L144 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:170,false-positive,Add: exit covered by defer func at L144 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:226,false-positive,Remove: exit covered by defer func at L220 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:228,false-positive,Remove: exit covered by defer func at L220 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:242,false-positive,RemoveOldest: exit covered by defer func at L236 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:244,false-positive,RemoveOldest: exit covered by defer func at L236 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:307,false-positive,Resize: exit covered by defer func at L301 calling c.mu.Unlock()
+golang-lru,expirable/expirable_lru.go:317,false-positive,Resize: exit covered by defer func at L301 calling c.mu.Unlock()
