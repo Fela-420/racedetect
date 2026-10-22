@@ -334,11 +334,11 @@ func exprToString(e ast.Expr) string {
 //  2. Does this node ACQUIRE the lock again (matching Lock/RLock),
 //     before any release was seen on this path?
 //     -> double-lock: the program deadlocks right here, report it,
-//        and stop walking this path (nothing past this point can
-//        ever actually execute).
+//     and stop walking this path (nothing past this point can
+//     ever actually execute).
 //  3. Neither, and this is a function exit with no successors?
 //     -> missing-unlock: this path genuinely returns without ever
-//        releasing the lock.
+//     releasing the lock.
 //
 // This ordering is what lets the walk correctly follow a loop
 // back-edge into the SAME Lock() statement it started from (as in a
@@ -463,4 +463,3 @@ func exitLine(fset *token.FileSet, b *cfg.Block) int {
 	}
 	return 0
 }
-
