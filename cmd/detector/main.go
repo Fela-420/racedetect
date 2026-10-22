@@ -153,6 +153,13 @@ func analyzeFile(path string) (violations, covered, clean int, err error) {
 			line := fset.Position(lock.pos).Line
 
 			if deferCovers {
+				// A defer still runs only at return, so a second Lock on the same
+				// receiver before it deadlocks regardless of the defer. Keep only that.
+				for _, f := range checkReachability(fset, unit.body, lock) {
+					if f.kind == "double-lock" {
+						allFinds = append(allFinds, labeledFind{unit: unit.name, lockLine: line, lockMethod: lock.method, find: f})
+					}
+				}
 				fmt.Printf("  [OK-DEFER]   %-18s line %-4d %-7s -> covered by defer\n", unit.name, line, lock.method)
 				covered++
 				anyOutput = true
